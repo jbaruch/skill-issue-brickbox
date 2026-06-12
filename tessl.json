@@ -1,0 +1,9 @@
+{
+  "name": "skill-issue-brickbox",
+  "mode": "vendored",
+  "dependencies": {
+    "jbaruch/skill-issue-policy": {
+      "version": "latest"
+    }
+  }
+}
