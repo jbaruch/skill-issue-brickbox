@@ -29,6 +29,11 @@ class Brick(BaseModel):
     qty: int
 
 
+@app.get("/health")
+def health() -> dict:
+    return {"status": "ok"}
+
+
 @app.get("/bricks")
 def list_bricks() -> dict[str, dict]:
     return BRICKS
