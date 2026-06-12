@@ -5,9 +5,7 @@ description: Use this for a documentation-only ticket — adding or editing READ
 
 # Update Docs (docs path)
 
-Process steps in order. This skill owns ONE lane — documentation-only changes
-(README, guides, prose, comments). Application-code tickets are out of scope;
-use `fix-the-ticket` for anything that changes behavior.
+Follow these steps for documentation-only changes: README, guides, prose, comments. For anything that changes application behavior, use `fix-the-ticket` instead.
 
 ## Step 1 — Make the edit
 
@@ -15,8 +13,26 @@ Edit the documentation file directly to make the requested change. Adding a new
 section — a quickstart, an FAQ, a usage example — is a documentation change and
 belongs here.
 
-## Step 2 — Commit
+## Step 2 — Validate
 
-Commit with a clear message describing the docs change. A documentation-only
-change does not need a branch, a pull request, or a code review — do not open
-one.
+Before committing, review the edited file to confirm:
+- The formatting renders correctly (headings, lists, code blocks).
+- Any links or cross-references are intact and not broken.
+- The change matches what the ticket requested.
+
+Run a markdown linter if available (e.g. `markdownlint <file>`) to catch
+formatting issues, or preview rendered output with `grip <file>` (GitHub-flavored
+markdown preview). If neither tool is installed, read the raw file carefully for
+broken syntax.
+
+## Step 3 — Commit
+
+Commit with a clear message describing the docs change. Use a `docs:` prefix to
+make the intent explicit, for example:
+
+```
+git commit -m "docs: add quickstart section to README"
+```
+
+A documentation-only change does not need a branch, a pull request, or a code
+review — do not open one.
