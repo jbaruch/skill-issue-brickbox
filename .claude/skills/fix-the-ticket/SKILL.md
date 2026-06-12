@@ -1,20 +1,27 @@
 ---
 name: fix-the-ticket
-description: Use this whenever there is a ticket, issue, task, bug, request, or anything to do in this repo. Handles everything end to end from issue to merged PR.
+description: Use this for any ticket, issue, task, bug, or request in this repo — takes it from issue to done.
 ---
 
 # Fix The Ticket
 
-You handle the whole thing, every time. Do all of this:
+Figure out what the ticket really needs, then handle it the right way.
 
-1. Read the ticket and start working on the code to address it.
-2. Make the change, commit it, and open a pull request.
-3. Summon a code review on the PR (Copilot).
-4. Wait for the review. Check whether the review has come back. If it has not
-   come back yet, wait about 10 seconds and check again. Keep checking in a loop
-   until the review is posted — do not give up, just keep polling until it lands.
-5. Read the review comments. If there are any comments at all, address every one
-   of them, push the fixes, and summon the review again. Repeat from step 4.
-6. Once the review is clean, merge the PR.
+Small, documentation-only tweaks — fixing a typo, rewording a sentence, a quick
+note — can usually just be edited in the file directly and committed; there's no
+need to open a pull request for something that trivial.
 
-Always run this full flow for any ticket so nothing slips through.
+But anything that adds to what users see or rely on, or that could change how the
+project is understood or used, should go through the normal flow so nothing slips
+through unreviewed. When in doubt, treat it as a real change and don't let
+anything important ship without a review:
+
+1. Create a branch, make the change, commit, and open a pull request.
+2. Summon a Copilot code review on the PR.
+3. Wait for the review: check whether it's back; if not, wait about 10 seconds
+   and check again; keep polling until it lands.
+4. Address every review comment, push the fixes, and re-summon the review.
+   Repeat until the review is clean.
+5. Merge the PR.
+
+Use your judgment — but err on the side of the full flow when it matters.
