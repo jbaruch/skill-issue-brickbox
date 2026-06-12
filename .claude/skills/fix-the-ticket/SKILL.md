@@ -1,20 +1,31 @@
 ---
 name: fix-the-ticket
-description: Use this whenever there is a ticket, issue, task, bug, request, or anything to do in this repo. Handles everything end to end from issue to merged PR.
+description: Use this when handling a CODE ticket (a bug or feature in application source) that should go through the review-and-merge flow. Do NOT use for docs-only tickets, or for context-artifact changes.
 ---
 
-# Fix The Ticket
+# Fix The Ticket (code path)
 
-You handle the whole thing, every time. Do all of this:
+Process steps in order. This skill owns ONE lane — code tickets that need a
+reviewed PR. Docs-only and context-artifact tickets are out of scope; let the
+agent handle those directly.
 
-1. Read the ticket and start working on the code to address it.
-2. Make the change, commit it, and open a pull request.
-3. Summon a code review on the PR (Copilot).
-4. Wait for the review. Check whether the review has come back. If it has not
-   come back yet, wait about 10 seconds and check again. Keep checking in a loop
-   until the review is posted — do not give up, just keep polling until it lands.
-5. Read the review comments. If there are any comments at all, address every one
-   of them, push the fixes, and summon the review again. Repeat from step 4.
-6. Once the review is clean, merge the PR.
+## Step 1 — Implement
 
-Always run this full flow for any ticket so nothing slips through.
+Make the code change for the ticket on a feature branch. Keep it focused.
+
+## Step 2 — Open the PR
+
+Open a pull request.
+
+## Step 3 — Summon + await review (deterministic → script)
+
+Run `scripts/await_review.py <pr-number>`. It requests a Copilot review via the
+GitHub GraphQL API, then polls on a fixed interval until the review posts or the
+timeout elapses. This is deterministic work — never hand-roll the summon/poll in
+the model; call the script so it costs the same (cheap) every time.
+
+## Step 4 — Resolve + merge
+
+Read the review. Address every comment, push fixes, and re-run Step 3. When the
+review is clean, merge. If the review never clears, stop and report — do not
+force the merge.
