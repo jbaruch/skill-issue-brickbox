@@ -4,7 +4,7 @@ A tiny Lego brick-inventory API. Know what you can build from the bricks you own
 
 ## Quickstart
 
-Requires Python 3.10+.
+Requires Python 3.9+.
 
 ```bash
 # 1. Install dependencies
